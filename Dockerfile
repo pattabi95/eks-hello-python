@@ -3,19 +3,19 @@ FROM python:3.10-slim AS builder
 WORKDIR /app
 
 #Install dependencies
-COPY app/requirements.txt .
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 #Final stage
 FROM python:3.10-slim
+
 WORKDIR /app
 
 #Copy installed pacakeges from builder
-COPY --from=builder /root/.local /root/.local
-ENV PATH=/root/.local/bin:$PATH
+COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 
-#Copy app code
-COPY /app .
+#Copy application code
+COPY app.py .
 
 EXPOSE 5000
 CMD ["python","app.py"]
