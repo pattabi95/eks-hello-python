@@ -1,0 +1,20 @@
+replicacount: 1
+
+image:
+  repository: pattabi95/hello-python
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8080
+
+ingress:
+  enabled: true
+  className: ""
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths: /
+      pathtype: ImplementationSpecific
