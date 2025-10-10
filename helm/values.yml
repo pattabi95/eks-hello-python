@@ -12,9 +12,9 @@ service:
 
 ingress:
   enabled: true
-  className: ""
+  className: alb
   annotations: {}
   hosts:
-    - host: chart-example.local
+    - host: hello-python.local
       paths: /
       pathtype: ImplementationSpecific
