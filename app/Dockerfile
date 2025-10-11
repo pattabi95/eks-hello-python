@@ -17,5 +17,5 @@ COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/pytho
 #Copy application code
 COPY app.py .
 
-EXPOSE 5000
+EXPOSE 8080
 CMD ["python","app.py"]
